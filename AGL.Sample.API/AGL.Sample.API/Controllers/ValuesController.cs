@@ -3,6 +3,7 @@ using System.Web.Http;
 
 namespace AGL.Sample.API.Controllers
 {
+    [Route("api/values")]
     public class ValuesController : ApiController
     {
         // GET api/values
