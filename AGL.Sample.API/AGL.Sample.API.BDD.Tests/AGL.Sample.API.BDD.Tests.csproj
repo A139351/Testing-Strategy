@@ -65,6 +65,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Numeric\CalculatorController\Fluent\AddTwoNumbers.cs" />
+    <Compile Include="Features\Numeric\CalculatorController\Fluent\Steps.cs" />
     <Compile Include="Features\Numeric\CalculatorController\AddTwoNumbers.cs" />
     <Compile Include="Fixtures\OwinServerFixtureCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
