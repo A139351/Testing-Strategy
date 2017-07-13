@@ -115,6 +115,8 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Features\Numeric\Calculator.cs" />
+    <Compile Include="Features\Numeric\CalculatorController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Features\Text\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
