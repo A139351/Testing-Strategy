@@ -117,6 +117,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Features\Numeric\Calculator.cs" />
     <Compile Include="Features\Numeric\CalculatorController.cs" />
+    <Compile Include="Features\Numeric\ICalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

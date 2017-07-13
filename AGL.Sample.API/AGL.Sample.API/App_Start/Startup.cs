@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Web.Http;
 using AGL.Sample.API;
+using AGL.Sample.API.Features.Numeric;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Microsoft.Owin;
@@ -20,6 +21,10 @@ namespace AGL.Sample.API
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             //Register items here
+            builder.RegisterType<Calculator>().AsImplementedInterfaces();
+
+
+
             var container = builder.Build();
 
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);

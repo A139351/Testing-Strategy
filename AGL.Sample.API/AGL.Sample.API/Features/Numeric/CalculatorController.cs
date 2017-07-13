@@ -1,19 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace AGL.Sample.API.Features.Numeric
 {
-    [Route("api/calculator")]
+    [RoutePrefix("api/calculator")]
     public class CalculatorController : ApiController
     {
+        private readonly ICalculator _calculator;
 
-
-
-        [Route("Add")]
-        public void Add([FromBody]IEnumerable<int> values)
+        public CalculatorController(ICalculator calculator)
         {
+            _calculator = calculator;
+        }
 
+
+        [Route("add")]
+        [HttpPost]
+        public IHttpActionResult Add([FromBody]IEnumerable<int> values)
+        {
+            return Ok("Good Chat!");
         }
     }
 }
