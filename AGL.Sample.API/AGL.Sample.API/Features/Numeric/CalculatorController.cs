@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace AGL.Sample.API.Features.Numeric
@@ -13,12 +16,16 @@ namespace AGL.Sample.API.Features.Numeric
             _calculator = calculator;
         }
 
-
-        [Route("add")]
         [HttpPost]
-        public IHttpActionResult Add([FromBody]IEnumerable<int> values)
+        [Route("add")]
+        public async Task<IHttpActionResult> Add([FromBody]IEnumerable<int> values)
         {
-            return Ok("Good Chat!");
+            var enumerable = values as int[] ?? values.ToArray();
+            if (enumerable.Length > 1)
+            {
+                return Ok(_calculator.Add(enumerable[0], enumerable[1]));
+            }
+            return InternalServerError(new Exception("No values supplied"));
         }
     }
 }
