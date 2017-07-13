@@ -1,11 +1,12 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
-using AGL.Sample.API.Integration.Tests.TestHelpers;
+using AGL.Sample.API.Integration.Tests.Fixtures;
+using AGL.Testing.xUnit;
 using Xunit;
 
 namespace AGL.Sample.API.Integration.Tests
 {
-    [Collection("OwinServerFixtureCollection")]
+    [Collection(FixtureCollections.OwinServerFixtureCollection)]
     public class AddRequestTests
     {
         private readonly OwinServerFixture _serverFixture;
@@ -20,7 +21,7 @@ namespace AGL.Sample.API.Integration.Tests
         {
             var request = new int[0];
 
-            var responseMessage = await _serverFixture.Client.PostAsync("api/calculator/add", _serverFixture.SerialiseBodyContent(request));
+            var responseMessage = await _serverFixture.GetClient<Startup>().PostAsync("api/calculator/add", _serverFixture.SerialiseBodyContent(request));
 
             Assert.Equal(HttpStatusCode.InternalServerError, responseMessage.StatusCode);
         }
@@ -30,7 +31,7 @@ namespace AGL.Sample.API.Integration.Tests
         {
             var request = new[]{1};
 
-            var responseMessage = await _serverFixture.Client.PostAsync("api/calculator/add", _serverFixture.SerialiseBodyContent(request));
+            var responseMessage = await _serverFixture.GetClient<Startup>().PostAsync("api/calculator/add", _serverFixture.SerialiseBodyContent(request));
 
             Assert.Equal(HttpStatusCode.InternalServerError, responseMessage.StatusCode);
         }
@@ -40,7 +41,7 @@ namespace AGL.Sample.API.Integration.Tests
         {
             var request = new[] {12, 3};
 
-            var responseMessage = await _serverFixture.Client.PostAsync("api/calculator/add", _serverFixture.SerialiseBodyContent(request));
+            var responseMessage = await _serverFixture.GetClient<Startup>().PostAsync("api/calculator/add", _serverFixture.SerialiseBodyContent(request));
             var responseBody = int.Parse(await responseMessage.Content.ReadAsStringAsync());
 
             Assert.Equal(HttpStatusCode.OK, responseMessage.StatusCode);
