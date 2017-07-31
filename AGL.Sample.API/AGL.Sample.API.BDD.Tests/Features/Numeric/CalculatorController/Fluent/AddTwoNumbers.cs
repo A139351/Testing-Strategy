@@ -22,8 +22,8 @@ namespace AGL.Sample.API.BDD.Tests.Features.Numeric.CalculatorController.Fluent
         [Fact]
         public void AddTwoNumbers()
         {
-            this.Given(s => _steps.GivenARequestWithTwoNumbers(13, 14))
-                .When(s => _steps.WhenTheRequestExecutes())
+            this.Given(_ => _steps.GivenARequestWithTwoNumbers(13, 14))
+                .When(_ => _steps.WhenTheRequestExecutes())
                 .Then(_ => _steps.TheResponseCodeIs(HttpStatusCode.OK), "The Response is a success")
                 .And(_ => _steps.TheReturnedContentIs(27))
                 .BDDfy();
